@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
-    {
+    public function index() {
+        // Menghitung jumlah user dengan level_id 2
+        $userCount = UserModel::where('level_id', 2)->count();
 
-        // coba akses model UserModel
-        $user = UserModel::findOr (20, ['username', 'nama'], function () {abort(464);
-        });
-        return view('user', ['data' => $user]);
+        // Kirim ke view 'user' dengan nama key 'data'
+        return view('user', ['data' => $userCount]);
     }
 }
