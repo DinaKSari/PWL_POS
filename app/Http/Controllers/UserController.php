@@ -12,7 +12,8 @@ class UserController extends Controller
     {
 
         // coba akses model UserModel
-        $user = UserModel::find(1); // nyari data
+        $user = UserModel::findOr (20, ['username', 'nama'], function () {abort(464);
+        });
         return view('user', ['data' => $user]);
     }
 }
