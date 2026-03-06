@@ -93,13 +93,19 @@ class BarangController extends Controller
 
     public function edit(string $id)
     {
+        // Ambil data berdasarkan ID
         $barang = BarangModel::find($id);
         $kategori = KategoriModel::all();
-        $breadcrumb = (object) ['title' => 'Edit Barang', 'list' => ['Home', 'Barang', 'Edit']];
+
+        $breadcrumb = (object) [
+            'title' => 'Edit Barang',
+            'list' => ['Home', 'Barang', 'Edit']
+        ];
         $page = (object) ['title' => 'Edit barang'];
         $activeMenu = 'barang';
 
-        return view('barang.edit', compact('breadcrumb', 'page', 'barang', 'kategori', 'activeMenu'));
+        // Perhatikan: 'barang' => $barang
+        return view('barang.edit', compact('barang', 'kategori', 'breadcrumb', 'page', 'activeMenu'));
     }
 
     public function update(Request $request, string $id)
