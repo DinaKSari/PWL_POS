@@ -18,6 +18,6 @@
                 <td>{{ $d->level_nama }}</td>
             </tr>
             @endforeach
-        </table>    
+        </table>
     </body>
 </html>
